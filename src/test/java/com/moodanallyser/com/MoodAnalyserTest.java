@@ -86,4 +86,17 @@ public class MoodAnalyserTest {
         MoodAnalyser moodAnalyserFactory = MoodAnalyserFactory.createMoodAnalyser("equal object");
         Assert.assertEquals(true,moodAnalyser.equals(moodAnalyserFactory));
     }
+
+    @Test
+    public void giveMessage_WhenTwoObjectEqual_UsingParameter_ReturnClassNotFound() {
+
+        MoodAnalyser moodAnalyser = new MoodAnalyser();
+        MoodAnalyser moodAnalyserFactory = null;
+        try {
+            moodAnalyserFactory = MoodAnalyserFactory.createMoodAnalyser();
+            Assert.assertEquals(true,moodAnalyser.equals(moodAnalyserFactory));
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.ExceptionType.NO_SUCH_CLASS,e.type);
+        }
+    }
 }
