@@ -45,12 +45,23 @@ public class MoodAnalyserTest {
     }
 
     @Test
-    public void giveMessage_WhenTwoObjectEqual_ReturnObject() {
+    public void giveMessage_WhenTwoObjectEqual_ReturnObject() throws MoodAnalysisException {
 
         MoodAnalyser moodAnalyser = new MoodAnalyser();
         MoodAnalyser moodAnalyserFactory = MoodAnalyserFactory.createMoodAnalyser();
         Assert.assertEquals(true,moodAnalyser.equals(moodAnalyserFactory));
     }
 
+    @Test
+    public void giveMessage_WhenTwoObjectEqual_ReturnClassNotFound() {
 
+        MoodAnalyser moodAnalyser = new MoodAnalyser();
+        MoodAnalyser moodAnalyserFactory = null;
+        try {
+            moodAnalyserFactory = MoodAnalyserFactory.createMoodAnalyser();
+            Assert.assertEquals(true,moodAnalyser.equals(moodAnalyserFactory));
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.ExceptionType.NO_SUCH_CLASS,e.type);
+        }
+    }
 }

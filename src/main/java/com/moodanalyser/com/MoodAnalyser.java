@@ -24,7 +24,7 @@ public class MoodAnalyser {
                 return "HAPPY";
             }
         } catch (NullPointerException e) {
-            throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.ENTERED_NULL,"Enter proper Mood");
+            throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.ENTERED_NULL,"Class not found");
         }
     }
 
