@@ -4,7 +4,7 @@ import com.exception.com.MoodAnalysisException;
 
 public class MoodAnalyser {
 
-    private  String message;
+    private  String message=null;
 
     public MoodAnalyser() {
     }
@@ -26,5 +26,11 @@ public class MoodAnalyser {
         } catch (NullPointerException e) {
             throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.ENTERED_NULL,"Enter proper Mood");
         }
+    }
+
+    public boolean equals(MoodAnalyser another){
+        if (this.message == another.message)
+            return true;
+        return false;
     }
 }

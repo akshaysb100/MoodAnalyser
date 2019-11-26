@@ -2,6 +2,7 @@ package com.moodanallyser.com;
 
 import com.exception.com.MoodAnalysisException;
 import com.moodanalyser.com.MoodAnalyser;
+import com.moodanalyser.com.MoodAnalyserFactory;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -35,11 +36,21 @@ public class MoodAnalyserTest {
     @Test
     public void giveMessage_WhenEmptyMessage_ReturnHappy() throws MoodAnalysisException {
 
-        MoodAnalyser moodAnalyser = new MoodAnalyser("");
+        MoodAnalyser moodAnalyser = new MoodAnalyser(" ");
         try{
 
         }catch (NullPointerException e){
             Assert.assertEquals("Enter proper Mood",moodAnalyser.realMoodAnalyser());
         }
     }
+
+    @Test
+    public void giveMessage_WhenTwoObjectEqual_ReturnObject() {
+
+        MoodAnalyser moodAnalyser = new MoodAnalyser();
+        MoodAnalyser moodAnalyserFactory = MoodAnalyserFactory.createMoodAnalyser();
+        Assert.assertEquals(true,moodAnalyser.equals(moodAnalyserFactory));
+    }
+
+
 }
