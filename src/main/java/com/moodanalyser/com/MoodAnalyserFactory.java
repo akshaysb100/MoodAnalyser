@@ -10,7 +10,7 @@ public class MoodAnalyserFactory {
     public static MoodAnalyser createMoodAnalyser() throws MoodAnalysisException {
 
         try {
-            Class<?> moodClass = Class.forName("com.moodanalyse.com.MoodAnalyser");
+            Class<?> moodClass = Class.forName("com.moodanalyser.com.MoodAnalyser");
             Constructor<?> moodConstructor = null;
             moodConstructor = moodClass.getConstructor();
             Object newObject = moodConstructor.newInstance();
@@ -18,7 +18,7 @@ public class MoodAnalyserFactory {
         } catch (ClassNotFoundException e) {
             throw  new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_CLASS,"Class not found");
         }catch (NoSuchMethodException e) {
-            throw  new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_METHOD,"Class not found");
+            throw  new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_METHOD,"Method not found");
 
         }catch (InstantiationException e) {
             e.printStackTrace();
@@ -29,6 +29,4 @@ public class MoodAnalyserFactory {
         }
         return null;
     }
-
-
 }

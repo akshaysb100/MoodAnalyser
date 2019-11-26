@@ -64,4 +64,17 @@ public class MoodAnalyserTest {
             Assert.assertEquals(MoodAnalysisException.ExceptionType.NO_SUCH_CLASS,e.type);
         }
     }
+
+    @Test
+    public void giveMessage_WhenTwoObjectEqual_ReturnMethodNotFound() {
+
+        MoodAnalyser moodAnalyser = new MoodAnalyser();
+        MoodAnalyser moodAnalyserFactory = null;
+        try {
+            moodAnalyserFactory = MoodAnalyserFactory.createMoodAnalyser();
+            Assert.assertEquals(true,moodAnalyser.equals(moodAnalyserFactory));
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.ExceptionType.NO_SUCH_METHOD,e.type);
+        }
+    }
 }
