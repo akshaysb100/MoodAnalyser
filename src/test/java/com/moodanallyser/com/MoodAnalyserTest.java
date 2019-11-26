@@ -19,7 +19,7 @@ public class MoodAnalyserTest {
 
         MoodAnalyser moodAnalyser = new MoodAnalyser();
         String mood = moodAnalyser.realMoodAnalyser("I am in any Mood");
-        Assert.assertEquals("any",mood);
+        Assert.assertEquals("HAPPY",mood);
 
     }
 

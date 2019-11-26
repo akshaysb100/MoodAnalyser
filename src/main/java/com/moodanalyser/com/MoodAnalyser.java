@@ -6,7 +6,7 @@ public class MoodAnalyser {
             if (message.contains(("I am in Sad  Mood"))) {
                 return "SAD";
             } else {
-                return "any";
+                return "HAPPY";
             }
     }
 }
