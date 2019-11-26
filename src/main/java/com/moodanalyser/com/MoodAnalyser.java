@@ -16,13 +16,15 @@ public class MoodAnalyser {
     public  String realMoodAnalyser() throws MoodAnalysisException {
 
         try {
+            if (message.length() == 0)
+                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.ENTERED_EMPTY,"happy");
             if (message.contains((null))) {
                 return "SAD";
             } else {
                 return "HAPPY";
             }
         } catch (NullPointerException e) {
-            throw new MoodAnalysisException("happy");
+            throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.ENTERED_NULL,"Enter proper Mood");
         }
     }
 }
