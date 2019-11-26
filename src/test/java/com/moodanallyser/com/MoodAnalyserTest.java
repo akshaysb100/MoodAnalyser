@@ -10,7 +10,7 @@ public class MoodAnalyserTest {
     public void giveMassage_WhenSad_ReturnSad() {
 
         MoodAnalyser moodAnalyser = new MoodAnalyser();
-        String mood = moodAnalyser.realMoodAnalyser("SAD");
+        String mood = moodAnalyser.realMoodAnalyser("I am in Sad Mood");
         Assert.assertEquals("SAD",mood);
     }
 
@@ -18,8 +18,8 @@ public class MoodAnalyserTest {
     public void giveMassage_WhenHappy_ReturnHappy()  {
 
         MoodAnalyser moodAnalyser = new MoodAnalyser();
-        String mood = moodAnalyser.realMoodAnalyser("HAPPY");
-        Assert.assertEquals("HAPPY",mood);
+        String mood = moodAnalyser.realMoodAnalyser("I am in any Mood");
+        Assert.assertEquals("any",mood);
 
     }
 
