@@ -1,5 +1,7 @@
 package com.moodanalyser.com;
 
+import com.exception.com.MoodAnalysisException;
+
 public class MoodAnalyser {
 
     private  String message;
@@ -11,7 +13,7 @@ public class MoodAnalyser {
         this.message=message;
     }
 
-    public  String realMoodAnalyser() {
+    public  String realMoodAnalyser() throws MoodAnalysisException {
 
         try {
             if (message.contains((null))) {
@@ -20,8 +22,7 @@ public class MoodAnalyser {
                 return "HAPPY";
             }
         } catch (NullPointerException e) {
-                e.printStackTrace();
-                return "SAD";
+            throw new MoodAnalysisException("happy");
         }
     }
 }
