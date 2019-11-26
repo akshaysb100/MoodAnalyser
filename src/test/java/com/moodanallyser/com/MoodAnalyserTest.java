@@ -18,7 +18,17 @@ public class MoodAnalyserTest {
 
         MoodAnalyser moodAnalyser = new MoodAnalyser("I am in happy Mood");
         Assert.assertEquals("HAPPY",moodAnalyser.realMoodAnalyser());
-
     }
 
+    @Test
+    public void giveMessage_WhenNullPointerException_ReturnHappy()  {
+
+        MoodAnalyser moodAnalyser = new MoodAnalyser(null);
+        try{
+            Assert.assertEquals("SAD",moodAnalyser.realMoodAnalyser());
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
+
+    }
 }

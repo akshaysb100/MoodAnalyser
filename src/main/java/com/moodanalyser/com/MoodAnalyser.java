@@ -13,10 +13,15 @@ public class MoodAnalyser {
 
     public  String realMoodAnalyser() {
 
-            if (message.contains(("I am in sad mood"))) {
+        try {
+            if (message.contains((null))) {
                 return "SAD";
             } else {
                 return "HAPPY";
             }
+        } catch (NullPointerException e) {
+                e.printStackTrace();
+                return "SAD";
+        }
     }
 }
