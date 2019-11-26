@@ -77,4 +77,13 @@ public class MoodAnalyserTest {
             Assert.assertEquals(MoodAnalysisException.ExceptionType.NO_SUCH_METHOD,e.type);
         }
     }
+
+
+    @Test
+    public void giveMessage_WhenTwoObjectEqual_UsingParameter_ReturnObject() throws MoodAnalysisException {
+
+        MoodAnalyser moodAnalyser = new MoodAnalyser("equal object");
+        MoodAnalyser moodAnalyserFactory = MoodAnalyserFactory.createMoodAnalyser("equal object");
+        Assert.assertEquals(true,moodAnalyser.equals(moodAnalyserFactory));
+    }
 }
