@@ -4,7 +4,7 @@ import com.exception.com.MoodAnalysisException;
 
 public class MoodAnalyser {
 
-    private  String message=null;
+    private  String message;
 
     public MoodAnalyser() {
     }
@@ -18,7 +18,7 @@ public class MoodAnalyser {
         try {
             if (message.length() == 0)
                 throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.ENTERED_EMPTY,"happy");
-            if (message.contains((null))) {
+            if (message.contains("SAD")) {
                 return "SAD";
             } else {
                 return "HAPPY";

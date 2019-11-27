@@ -2,7 +2,7 @@ package com.moodanallyser.com;
 
 import com.exception.com.MoodAnalysisException;
 import com.moodanalyser.com.MoodAnalyser;
-import com.moodanalyser.com.MoodAnalyserFactory;
+import com.moodanalyser.com.MoodAnalyserReflector;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -48,7 +48,7 @@ public class MoodAnalyserTest {
     public void giveMessage_WhenTwoObjectEqual_ReturnObject() throws MoodAnalysisException {
 
         MoodAnalyser moodAnalyser = new MoodAnalyser();
-        MoodAnalyser moodAnalyserFactory = MoodAnalyserFactory.createMoodAnalyser();
+        MoodAnalyser moodAnalyserFactory = MoodAnalyserReflector.createMoodAnalyser();
         Assert.assertEquals(true,moodAnalyser.equals(moodAnalyserFactory));
     }
 
@@ -58,7 +58,7 @@ public class MoodAnalyserTest {
         MoodAnalyser moodAnalyser = new MoodAnalyser();
         MoodAnalyser moodAnalyserFactory = null;
         try {
-            moodAnalyserFactory = MoodAnalyserFactory.createMoodAnalyser();
+            moodAnalyserFactory = MoodAnalyserReflector.createMoodAnalyser();
             Assert.assertEquals(true,moodAnalyser.equals(moodAnalyserFactory));
         } catch (MoodAnalysisException e) {
             Assert.assertEquals(MoodAnalysisException.ExceptionType.NO_SUCH_CLASS,e.type);
@@ -71,7 +71,7 @@ public class MoodAnalyserTest {
         MoodAnalyser moodAnalyser = new MoodAnalyser();
         MoodAnalyser moodAnalyserFactory = null;
         try {
-            moodAnalyserFactory = MoodAnalyserFactory.createMoodAnalyser();
+            moodAnalyserFactory = MoodAnalyserReflector.createMoodAnalyser();
             Assert.assertEquals(true,moodAnalyser.equals(moodAnalyserFactory));
         } catch (MoodAnalysisException e) {
             Assert.assertEquals(MoodAnalysisException.ExceptionType.NO_SUCH_METHOD,e.type);
@@ -83,7 +83,7 @@ public class MoodAnalyserTest {
     public void giveMessage_WhenTwoObjectEqual_UsingParameter_ReturnObject() throws MoodAnalysisException {
 
         MoodAnalyser moodAnalyser = new MoodAnalyser("equal object");
-        MoodAnalyser moodAnalyserFactory = MoodAnalyserFactory.createMoodAnalyser("equal object");
+        MoodAnalyser moodAnalyserFactory = MoodAnalyserReflector.createMoodAnalyser("equal object");
         Assert.assertEquals(true,moodAnalyser.equals(moodAnalyserFactory));
     }
 
@@ -93,10 +93,56 @@ public class MoodAnalyserTest {
         MoodAnalyser moodAnalyser = new MoodAnalyser();
         MoodAnalyser moodAnalyserFactory = null;
         try {
-            moodAnalyserFactory = MoodAnalyserFactory.createMoodAnalyser();
+            moodAnalyserFactory = MoodAnalyserReflector.createMoodAnalyser("class not found");
             Assert.assertEquals(true,moodAnalyser.equals(moodAnalyserFactory));
         } catch (MoodAnalysisException e) {
             Assert.assertEquals(MoodAnalysisException.ExceptionType.NO_SUCH_CLASS,e.type);
         }
     }
+
+    @Test
+    public void giveMessage_WhenTwoObjectEqual_UsingParameter_ReturnMethodNotFound() {
+
+        MoodAnalyser moodAnalyser = new MoodAnalyser();
+        MoodAnalyser moodAnalyserFactory = null;
+        try {
+            moodAnalyserFactory = MoodAnalyserReflector.createMoodAnalyser();
+            Assert.assertEquals(true,moodAnalyser.equals(moodAnalyserFactory));
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.ExceptionType.NO_SUCH_METHOD,e.type);
+        }
+    }
+
+    @Test
+    public void givenHappyMessage_WithReflection_ShouldReturnHappy() {
+
+        Object moodAnalyser = null;
+        try {
+            moodAnalyser = MoodAnalyserReflector.createMoodAnalyser("I am in a happy mood");
+            Object analisMoods=MoodAnalyserReflector.invokeMethod(moodAnalyser,"realMoodAnalyser");
+            Assert.assertEquals("HAPPY",analisMoods);
+
+        } catch (MoodAnalysisException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void giveMoodAnalyser_OnChangeMood_ShouldReturnHappy() {
+
+        Object moodAnalyser = null;
+        try {
+            moodAnalyser = MoodAnalyserReflector.createMoodAnalyser();
+            MoodAnalyserReflector.setFiled(moodAnalyser,"message","I am in happy mood");
+            Object analisMoods=MoodAnalyserReflector.invokeMethod(moodAnalyser,"realMoodAnalyser");
+            Assert.assertEquals("HAPPY",analisMoods);
+
+        } catch (MoodAnalysisException e) {
+            e.printStackTrace();
+        }
+    }
 }
+
+
+
+

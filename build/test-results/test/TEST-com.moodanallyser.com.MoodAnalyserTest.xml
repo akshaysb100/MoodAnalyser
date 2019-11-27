@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.moodanallyser.com.MoodAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-11-26T10:19:42" hostname="admin1-LIVA-Z2V" time="0.005">
+<testsuite name="com.moodanallyser.com.MoodAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-11-27T06:03:41" hostname="admin1-LIVA-Z2V" time="0.011">
   <properties/>
-  <testcase name="giveMessage_WhenTwoObjectEqual_UsingParameter_ReturnClassNotFound" classname="com.moodanallyser.com.MoodAnalyserTest" time="0.005"/>
+  <testcase name="giveMoodAnalyser_OnChangeMood_ShouldReturnHappy" classname="com.moodanallyser.com.MoodAnalyserTest" time="0.011"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
